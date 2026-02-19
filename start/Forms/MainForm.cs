@@ -13,20 +13,53 @@ namespace start
             GetData();
         }
 
+        #region хламник
+        private void GetData()
+        {
+            mainView.DataSource = StartDB.GetAttendances();
+            mainView.ReadOnly = true;
+
+            sportsmensView.DataSource = StartDB.GetSportsmen();
+            sportsmensView.ReadOnly = true;
+
+            coachesView.DataSource = StartDB.GetCoaches();
+            coachesView.ReadOnly = true;
+        }
+
+        private void Table_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    RowDelete(sender as DataGridView);
+                    break;
+            }
+        }
+
+        private void RowDelete(DataGridView dataGrid)
+        {
+            int rowIndx = dataGrid.SelectedCells[0].RowIndex;
+            var row = dataGrid.Rows[rowIndx];
+            var data = row.DataBoundItem;
+
+            if (data is Coaches coaches)
+            {
+                DeleteInDateBase.RemoveCoaches(coaches.Id);
+                coachesView.DataSource = StartDB.GetCoaches();
+            }
+            else if (data is Sportsmen sportsmen)
+            {
+                DeleteInDateBase.RemoveSportsmen(sportsmen.Id);
+                sportsmensView.DataSource = StartDB.GetSportsmen();
+            }
+        }
+
         //private void CreateBase()
         //{
         //    using var db = new connect();
         //    db.Database.EnsureCreated();
         //}
-
-        private void GetData()
-        {
-            mainView.DataSource = StartDB.GetAttendances();
-
-            sportsmensView.DataSource = StartDB.GetSportsmen();
-
-            coachesView.DataSource = StartDB.GetCoaches();
-        }
+        #endregion
 
         #region добавление спортсмена
         private void AddSportsmen_Click(object sender, EventArgs e)
@@ -80,7 +113,7 @@ namespace start
 
         private void Ctp_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            mainView.DataSource = CheckTraining.CheckTr();
+            mainView.DataSource = CheckTraining.CheckTrainingPpleAddOut();
             mainView.ReadOnly = true;
         }
         #endregion
@@ -96,7 +129,7 @@ namespace start
 
         private void Ctc_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            mainView.DataSource = CheckTraining.CheckTrC();
+            mainView.DataSource = CheckTraining.CheckTrainingCoachesOut();
             mainView.ReadOnly = true;
         }
         #endregion
@@ -108,41 +141,16 @@ namespace start
 
             Cac.FormClosing += Cac_FormClosing;
             Cac.ShowDialog();
-
         }
 
         private void Cac_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            mainView.DataSource = CheckTraining.CheckPple();
+            CheckActiveChild Cac = new CheckActiveChild();
+
+
+            mainView.DataSource = CheckTraining.CheckPpleOut();
             mainView.ReadOnly = true;
         }
         #endregion
-        private void Table_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Delete:
-                    RowDelete(sender as DataGridView);
-                    break;
-            }
-        }
-
-        private void RowDelete(DataGridView dataGrid)
-        {
-            int rowIndx = dataGrid.SelectedCells[0].RowIndex;
-            var row = dataGrid.Rows[rowIndx];
-            var data = row.DataBoundItem;
-
-            if (data is Coaches coaches)
-            {
-                DeleteInDateBase.RemoveCoaches(coaches.Id);
-                coachesView.DataSource = StartDB.GetCoaches();
-            }
-            else if (data is Sportsmen sportsmen)
-            {
-                DeleteInDateBase.RemoveSportsmen(sportsmen.Id);
-                sportsmensView.DataSource = StartDB.GetSportsmen();
-            }
-        }
     }
 }

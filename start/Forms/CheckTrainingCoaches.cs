@@ -5,6 +5,7 @@ namespace start
 {
     public partial class CheckTrainingCoaches : Form
     {
+        private CheckTraining a = new CheckTraining();
         public CheckTrainingCoaches()
         {
             InitializeComponent();
@@ -29,6 +30,10 @@ namespace start
             if (CheckValue())
             {
                 var cId = checkedListBox1.CheckedItems.Cast<Coaches>().ToList();
+                var date = dateTimePicker1.Value.Date;
+                var date2 = dateTimePicker2.Value.Date;
+
+                a.AddInfoTwo(cId, date, date2);
 
                 this.Close();
             }

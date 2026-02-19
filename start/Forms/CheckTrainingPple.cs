@@ -12,6 +12,7 @@ namespace start
 {
     public partial class CheckTrainingPple : Form
     {
+        private CheckTraining a = new CheckTraining();
         public CheckTrainingPple()
         {
             InitializeComponent();
@@ -36,6 +37,10 @@ namespace start
             if (CheckValue())
             {
                 var sId = checkedListBox1.CheckedItems.Cast<Sportsmen>().ToList();
+                var data = dateTimePicker1.Value.Date;
+                var data2 = dateTimePicker2.Value.Date;
+
+                a.AddInfoThree(sId, data, data2);
 
                 this.Close();
             }

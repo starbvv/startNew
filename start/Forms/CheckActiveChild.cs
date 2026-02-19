@@ -4,7 +4,7 @@ namespace start
 {
     public partial class CheckActiveChild : Form
     {
-        private MainForm a = new();
+        private CheckTraining a = new CheckTraining();
         public CheckActiveChild()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace start
         {
             if (CheckValue())
             {
+                a.AddInfo(comboBox1.Text);
                 this.Close();
             }
         }
