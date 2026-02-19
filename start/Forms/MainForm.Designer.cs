@@ -92,6 +92,7 @@
             sportsmensView.RowHeadersWidth = 62;
             sportsmensView.Size = new Size(788, 110);
             sportsmensView.TabIndex = 0;
+            sportsmensView.KeyDown += Table_KeyDown;
             // 
             // tabDishes
             // 
@@ -115,6 +116,7 @@
             coachesView.RowHeadersWidth = 62;
             coachesView.Size = new Size(788, 110);
             coachesView.TabIndex = 0;
+            coachesView.KeyDown += Table_KeyDown;
             // 
             // toolStrip
             // 

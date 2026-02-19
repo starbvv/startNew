@@ -22,13 +22,10 @@ namespace start
         private void GetData()
         {
             mainView.DataSource = StartDB.GetAttendances();
-            mainView.ReadOnly = true;
 
             sportsmensView.DataSource = StartDB.GetSportsmen();
-            sportsmensView.ReadOnly = true;
 
             coachesView.DataSource = StartDB.GetCoaches();
-            coachesView.ReadOnly = true;
         }
 
         #region добавление спортсмена
@@ -120,5 +117,32 @@ namespace start
             mainView.ReadOnly = true;
         }
         #endregion
+        private void Table_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    RowDelete(sender as DataGridView);
+                    break;
+            }
+        }
+
+        private void RowDelete(DataGridView dataGrid)
+        {
+            int rowIndx = dataGrid.SelectedCells[0].RowIndex;
+            var row = dataGrid.Rows[rowIndx];
+            var data = row.DataBoundItem;
+
+            if (data is Coaches coaches)
+            {
+                DeleteInDateBase.RemoveCoaches(coaches.Id);
+                coachesView.DataSource = StartDB.GetCoaches();
+            }
+            else if (data is Sportsmen sportsmen)
+            {
+                DeleteInDateBase.RemoveSportsmen(sportsmen.Id);
+                sportsmensView.DataSource = StartDB.GetSportsmen();
+            }
+        }
     }
 }
