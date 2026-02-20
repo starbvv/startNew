@@ -1,6 +1,6 @@
-﻿namespace start
+﻿namespace start.Forms
 {
-    partial class CheckTrainingCoaches
+    partial class EditDateTraining
     {
         /// <summary>
         /// Required designer variable.
@@ -28,101 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            dateTimePicker2 = new DateTimePicker();
             label2 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            label1 = new Label();
             checkedListBox1 = new CheckedListBox();
+            comboBox1 = new ComboBox();
+            button1 = new Button();
             label3 = new Label();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(12, 167);
-            button1.Name = "button1";
-            button1.Size = new Size(319, 23);
-            button1.TabIndex = 31;
-            button1.Text = "Искать";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(123, 138);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(208, 23);
-            dateTimePicker2.TabIndex = 38;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(76, 144);
+            label2.Location = new Point(83, 141);
             label2.Name = "label2";
-            label2.Size = new Size(41, 15);
-            label2.TabIndex = 37;
-            label2.Text = "2 Дата";
+            label2.Size = new Size(32, 15);
+            label2.TabIndex = 31;
+            label2.Text = "Дата";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(123, 109);
+            dateTimePicker1.Location = new Point(121, 135);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(208, 23);
-            dateTimePicker1.TabIndex = 36;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(76, 115);
-            label1.Name = "label1";
-            label1.Size = new Size(41, 15);
-            label1.TabIndex = 35;
-            label1.Text = "1 Дата";
+            dateTimePicker1.Size = new Size(206, 23);
+            dateTimePicker1.TabIndex = 30;
             // 
             // checkedListBox1
             // 
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(123, 9);
+            checkedListBox1.Location = new Point(121, 35);
             checkedListBox1.Name = "checkedListBox1";
             checkedListBox1.Size = new Size(208, 94);
-            checkedListBox1.TabIndex = 34;
+            checkedListBox1.TabIndex = 29;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(121, 6);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(208, 23);
+            comboBox1.TabIndex = 28;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(5, 159);
+            button1.Name = "button1";
+            button1.Size = new Size(324, 23);
+            button1.TabIndex = 27;
+            button1.Text = "Добавить";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(39, 9);
+            label3.Location = new Point(37, 35);
             label3.Name = "label3";
             label3.Size = new Size(78, 15);
-            label3.TabIndex = 32;
+            label3.TabIndex = 26;
             label3.Text = "Спортсмены";
             // 
-            // CheckTrainingCoaches
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(68, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(47, 15);
+            label1.TabIndex = 25;
+            label1.Text = "Тренер";
+            // 
+            // EditDateTraining
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(341, 194);
-            Controls.Add(dateTimePicker2);
+            ClientSize = new Size(336, 186);
             Controls.Add(label2);
             Controls.Add(dateTimePicker1);
-            Controls.Add(label1);
             Controls.Add(checkedListBox1);
-            Controls.Add(label3);
+            Controls.Add(comboBox1);
             Controls.Add(button1);
+            Controls.Add(label3);
+            Controls.Add(label1);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "CheckTrainingCoaches";
-            Text = "CheckTrainingCoaches";
+            Name = "EditDateTraining";
+            Text = "EditDateTraining";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button button1;
-        private DateTimePicker dateTimePicker2;
+
         private Label label2;
         private DateTimePicker dateTimePicker1;
-        private Label label1;
         private CheckedListBox checkedListBox1;
+        private ComboBox comboBox1;
+        private Button button1;
         private Label label3;
+        private Label label1;
     }
 }

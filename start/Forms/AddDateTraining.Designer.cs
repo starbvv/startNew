@@ -109,6 +109,8 @@
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddDateTraining";
             Text = "CheckDateTraining";
             ResumeLayout(false);

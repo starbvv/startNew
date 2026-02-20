@@ -109,6 +109,8 @@
             Controls.Add(dateTimePicker1);
             Controls.Add(textBox4);
             Controls.Add(textBox1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddNewSportsmen";
             Text = "AddNewSportsmen";
             ResumeLayout(false);

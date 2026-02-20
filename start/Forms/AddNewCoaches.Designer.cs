@@ -90,6 +90,8 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddNewCoaches";
             Text = "AddNewCoaches";
             ResumeLayout(false);

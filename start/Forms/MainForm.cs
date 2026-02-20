@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using start.Forms;
 using start.Models;
 using start.Services;
 namespace start
@@ -24,7 +25,7 @@ namespace start
 
             coachesView.DataSource = StartDB.GetCoaches();
             coachesView.ReadOnly = true;
-        }
+        }  //<----- получение данных
 
         private void Table_KeyDown(object sender, KeyEventArgs e)
         {
@@ -33,10 +34,13 @@ namespace start
                 case Keys.Delete:
                     RowDelete(sender as DataGridView);
                     break;
+                case Keys.Enter:
+                    RowUpdate(sender as DataGridView);
+                    break;
             }
-        }
+        } //<----- обработка кнопок
 
-        private void RowDelete(DataGridView dataGrid)
+        private void RowDelete(DataGridView dataGrid) 
         {
             int rowIndx = dataGrid.SelectedCells[0].RowIndex;
             var row = dataGrid.Rows[rowIndx];
@@ -52,13 +56,40 @@ namespace start
                 DeleteInDateBase.RemoveSportsmen(sportsmen.Id);
                 sportsmensView.DataSource = StartDB.GetSportsmen();
             }
-        }
+        } //<----- получение строк для удаления
 
-        //private void CreateBase()
+        private void RowUpdate(DataGridView dataGrid)
+        {
+            int rowIndx = dataGrid.SelectedCells[0].RowIndex;
+            var row = dataGrid.Rows[rowIndx];
+            var data = row.DataBoundItem;
+
+            if(data is Coaches coaches)
+            {
+                EditCoaches editCoaches = new EditCoaches(coaches.Id, coaches.FullName, coaches.SportType);
+                coachesView.DataSource = StartDB.GetCoaches();
+                coachesView.ReadOnly = true;
+
+            }
+            else if(data is Sportsmen sportsmen)
+            {
+                EditSportsmen editSportsmen = new EditSportsmen(sportsmen.Id, sportsmen.FullName, sportsmen.Bday, sportsmen.ParentPhone);
+                sportsmensView.DataSource = StartDB.GetSportsmen();
+                sportsmensView.ReadOnly = true;
+            }
+            else if(data is Attendances attendances)
+            {
+                EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches, attendances.TrainingDate, attendances.Attended);
+                mainView.DataSource = StartDB.GetAttendances();
+                mainView.ReadOnly = true;
+            }
+        } //<----- получение строк для обновления
+
+        //private void CreateBase() 
         //{
         //    using var db = new connect();
         //    db.Database.EnsureCreated();
-        //}
+        //} //<----- создание бз, если нету. хе х)
         #endregion
 
         #region добавление спортсмена
