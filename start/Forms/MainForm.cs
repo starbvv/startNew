@@ -79,7 +79,7 @@ namespace start
             }
             else if(data is Attendances attendances)
             {
-                EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches, attendances.TrainingDate, attendances.Attended);
+                EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches.ToString(), attendances.TrainingDate, attendances.Attended);
                 mainView.DataSource = StartDB.GetAttendances();
                 mainView.ReadOnly = true;
             }
