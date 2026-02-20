@@ -19,8 +19,7 @@ namespace start.Services
         public static DateTime dataTwoS;
         #endregion
 
-
-        public static readonly string ConnectionString = Path.Combine(AppContext.BaseDirectory, @"dabe.db");
+        public static readonly string ConnectionString = Path.Combine(AppContext.BaseDirectory, @"..\..\..\dabe.db");
 
         public string AddInfo(string add)
         {

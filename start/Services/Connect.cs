@@ -11,7 +11,8 @@ namespace start.Services
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data source = dabe.db");
+            string dbPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\dabe.db"));
+            optionsBuilder.UseSqlite($"Data source = {dbPath}");
         }
     }
 }
