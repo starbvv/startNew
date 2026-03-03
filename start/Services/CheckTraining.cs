@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using start.Models;
@@ -128,9 +128,16 @@ namespace start.Services
         {
             var all = CheckPple();
 
-            var filtered = all.Where(a => string.Equals(a.ChildName, info)).ToList();
+            if (string.IsNullOrEmpty(info))
+            {
+                return all;
+            }
+            else
+            {
+                var filtered = all.Where(a => string.Equals(a.ChildName, info)).ToList();
 
-            return filtered;
+                return filtered;
+            }
         }
 
         public static List<CheckTrainingCoachesKEK> CheckTrainingCoachesOut()
@@ -140,11 +147,19 @@ namespace start.Services
             DateTime from = dataOneC;
             DateTime to = dataTwoC; 
 
-            var name = info2.Select(a => a.FullName?.Trim() ?? "");
+            if(info2 == null)
+            {
+                return all;
+            }
+            else
+            {
+                var name = info2.Select(a => a.FullName?.Trim() ?? "");
 
-            var filtered = all.Where(a => name.Contains(a.CoachesName.Trim()) && a.DateTrainings >= from.Date && a.DateTrainings <= to.Date).ToList();
+                var filtered = all.Where(a => name.Contains(a.CoachesName.Trim()) && a.DateTrainings >= from.Date && a.DateTrainings <= to.Date).ToList();
 
-            return filtered;
+                return filtered;
+            }
+
         }
 
         public static List<CheckTrainingPpleKEK> CheckTrainingPpleAddOut()
@@ -154,11 +169,18 @@ namespace start.Services
             DateTime from = dataOneS;
             DateTime to = dataTwoS;
 
-            var name = info3.Select(a => a.FullName?.Trim() ?? "");
+            if (info3 == null)
+            {
+                return all;
+            }
+            else
+            {
+                var name = info3.Select(a => a.FullName?.Trim() ?? "");
 
-            var filtered = all.Where(a => name.Contains(a.ChildName.Trim()) && a.MissedDate >= from.Date && a.MissedDate <= to.Date).ToList();
+                var filtered = all.Where(a => name.Contains(a.ChildName.Trim()) && a.MissedDate >= from.Date && a.MissedDate <= to.Date).ToList();
 
-            return filtered;
+                return filtered;
+            }
         }
         #endregion
     }
