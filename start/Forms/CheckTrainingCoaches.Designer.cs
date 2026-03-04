@@ -90,11 +90,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(39, 9);
+            label3.Location = new Point(64, 9);
             label3.Name = "label3";
-            label3.Size = new Size(78, 15);
+            label3.Size = new Size(53, 15);
             label3.TabIndex = 32;
-            label3.Text = "Спортсмены";
+            label3.Text = "Тренера";
             // 
             // CheckTrainingCoaches
             // 

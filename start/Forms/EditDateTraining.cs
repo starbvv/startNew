@@ -19,26 +19,28 @@ namespace start.Forms
             coachesOld = coaches;
             trainingDateOld = trainingDate;
             attendedOld = attended;
-            Add(sportsmen, coaches, trainingDate, attended);
 
             comboBox1.Items.AddRange(StartDB.GetCoaches().ToArray());
             checkedListBox1.Items.AddRange(StartDB.GetSportsmen().ToArray());
+
+            dateTimePicker1.Value = trainingDate;
         }
-
-        private void Add(Sportsmen sportsmens, string coaches, DateTime trainingDate, bool attended)
-        {
-            comboBox1.SelectedIndex = comboBox1.FindStringExact
-                (
-                StartDB.GetCoaches().ToString()
-                );
-
-
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var selectedCoach = (Coaches)comboBox1.SelectedItem;
 
+            var selectedSportsman = (Sportsmen)checkedListBox1.CheckedItems[0];
+
+            UpdateInDateBase.UpdateAt(
+                id: dateId,
+                sportsmenId: selectedSportsman.Id,
+                coachesId: selectedCoach.Id,
+                trainingDate: dateTimePicker1.Value.Date,
+                attended: true
+            );
+
+            this.Close();
         }
     }
 }

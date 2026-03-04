@@ -25,9 +25,9 @@ namespace start.Services
                 db.Sportsmens.Add(newSportsmen);
                 db.SaveChanges();
             }
-            catch ( Exception ex )
+            catch
             {
-                MessageBox.Show("1");
+                MessageBox.Show("Не удалось добавить спортсмена.");
             }
         }
 
@@ -49,9 +49,9 @@ namespace start.Services
                 db.Coaches.Add(newCouches);
                 db.SaveChanges();
             }
-            catch ( Exception ex )
+            catch
             {
-                MessageBox.Show("2");
+                MessageBox.Show("Не удалось добавить тренера.");
             }
         }
 
@@ -101,9 +101,9 @@ namespace start.Services
 
                 db.SaveChanges();
             }
-            catch ( Exception ex )
+            catch
             {
-                MessageBox.Show($"{ex}"); 
+                MessageBox.Show("Не удалось добавить посещение.");
             }
         }
     }

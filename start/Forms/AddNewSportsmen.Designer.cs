@@ -52,6 +52,7 @@
             textBox4.PlaceholderText = "79998887766";
             textBox4.Size = new Size(208, 23);
             textBox4.TabIndex = 3;
+            textBox4.KeyPress += textBox4_KeyPress;
             // 
             // dateTimePicker1
             // 

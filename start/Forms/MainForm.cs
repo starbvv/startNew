@@ -34,7 +34,7 @@ namespace start
                 case Keys.Delete:
                     RowDelete(sender as DataGridView);
                     break;
-                case Keys.Enter:
+                case Keys.E:
                     RowUpdate(sender as DataGridView);
                     break;
             }
@@ -67,6 +67,7 @@ namespace start
             if(data is Coaches coaches)
             {
                 EditCoaches editCoaches = new EditCoaches(coaches.Id, coaches.FullName, coaches.SportType);
+                editCoaches.ShowDialog();
                 coachesView.DataSource = StartDB.GetCoaches();
                 coachesView.ReadOnly = true;
 
@@ -74,12 +75,14 @@ namespace start
             else if(data is Sportsmen sportsmen)
             {
                 EditSportsmen editSportsmen = new EditSportsmen(sportsmen.Id, sportsmen.FullName, sportsmen.Bday, sportsmen.ParentPhone);
+                editSportsmen.ShowDialog();
                 sportsmensView.DataSource = StartDB.GetSportsmen();
                 sportsmensView.ReadOnly = true;
             }
             else if(data is Attendances attendances)
             {
                 EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches.ToString(), attendances.TrainingDate, attendances.Attended);
+                editDateTraining.ShowDialog();
                 mainView.DataSource = StartDB.GetAttendances();
                 mainView.ReadOnly = true;
             }

@@ -38,15 +38,8 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
-            работает по такой логике: если данные не были изменены и/или комбоБокс пустой - ничего не произойдет. 
-            в ином случае произойдет обновление бд.
-             */
-            if(CheckValue()) 
-            {
-                UpdateInDateBase.UpdateCoaches(CoachesId, textBox1.Text, comboBox1.Text);
-                this.Close();
-            }
+            UpdateInDateBase.UpdateCoaches(CoachesId, textBox1.Text, comboBox1.Text);
+            this.Close();
         }
     }
 }

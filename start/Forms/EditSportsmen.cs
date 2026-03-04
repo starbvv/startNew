@@ -52,11 +52,8 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (CheckValue(textBox4.Text))
-            {
-                UpdateInDateBase.UpdateSportsmen(sportsmenId, textBox1.Text, bdayOld, textBox4.Text);
-                this.Close();
-            }
+            UpdateInDateBase.UpdateSportsmen(sportsmenId, textBox1.Text, bdayOld, textBox4.Text);
+            this.Close();
         }
     }
 }

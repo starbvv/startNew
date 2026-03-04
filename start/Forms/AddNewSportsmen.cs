@@ -41,5 +41,10 @@ namespace start
                 this.Close();
             }
         }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
