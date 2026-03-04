@@ -92,6 +92,7 @@
             sportsmensView.RowHeadersWidth = 62;
             sportsmensView.Size = new Size(788, 110);
             sportsmensView.TabIndex = 0;
+            sportsmensView.CellContentClick += mainView_CellDoubleClick;
             sportsmensView.KeyDown += Table_KeyDown;
             // 
             // tabDishes
@@ -116,6 +117,7 @@
             coachesView.RowHeadersWidth = 62;
             coachesView.Size = new Size(788, 110);
             coachesView.TabIndex = 0;
+            coachesView.CellDoubleClick += mainView_CellDoubleClick;
             coachesView.KeyDown += Table_KeyDown;
             // 
             // toolStrip
@@ -210,6 +212,7 @@
             mainView.RowHeadersWidth = 62;
             mainView.Size = new Size(800, 281);
             mainView.TabIndex = 0;
+            mainView.CellDoubleClick += mainView_CellDoubleClick;
             // 
             // MainForm
             // 

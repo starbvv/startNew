@@ -26,21 +26,42 @@ namespace start.Forms
             dateTimePicker1.Value = trainingDate;
         }
 
+        private bool CheckValue()
+        {
+            if (comboBox1.Items == null)
+            {
+                MessageBox.Show("Проверьте тренера");
+                return false;
+            }
+            else if (checkedListBox1.CheckedItems.Count > 0)
+            {
+                MessageBox.Show("Проверьте спортсменов");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            var selectedCoach = (Coaches)comboBox1.SelectedItem;
+            if(CheckValue())
+            {
+                var selectedCoach = (Coaches)comboBox1.SelectedItem;
 
-            var selectedSportsman = (Sportsmen)checkedListBox1.CheckedItems[0];
+                var selectedSportsman = (Sportsmen)checkedListBox1.CheckedItems[0];
 
-            UpdateInDateBase.UpdateAt(
-                id: dateId,
-                sportsmenId: selectedSportsman.Id,
-                coachesId: selectedCoach.Id,
-                trainingDate: dateTimePicker1.Value.Date,
-                attended: true
-            );
+                UpdateInDateBase.UpdateAt(
+                    id: dateId,
+                    sportsmenId: selectedSportsman.Id,
+                    coachesId: selectedCoach.Id,
+                    trainingDate: dateTimePicker1.Value.Date,
+                    attended: true
+                );
 
-            this.Close();
+                this.Close();
+            }
         }
     }
 }

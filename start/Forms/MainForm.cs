@@ -34,13 +34,14 @@ namespace start
                 case Keys.Delete:
                     RowDelete(sender as DataGridView);
                     break;
-                case Keys.E:
-                    RowUpdate(sender as DataGridView);
-                    break;
             }
-        } //<----- обработка кнопок
+        }//<----- обработка кнопок
+        private void mainView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RowUpdate(sender as DataGridView);
+        }//<----- обработка двойного клика
 
-        private void RowDelete(DataGridView dataGrid) 
+        private void RowDelete(DataGridView dataGrid)
         {
             int rowIndx = dataGrid.SelectedCells[0].RowIndex;
             var row = dataGrid.Rows[rowIndx];
@@ -64,7 +65,7 @@ namespace start
             var row = dataGrid.Rows[rowIndx];
             var data = row.DataBoundItem;
 
-            if(data is Coaches coaches)
+            if (data is Coaches coaches)
             {
                 EditCoaches editCoaches = new EditCoaches(coaches.Id, coaches.FullName, coaches.SportType);
                 editCoaches.ShowDialog();
@@ -72,14 +73,14 @@ namespace start
                 coachesView.ReadOnly = true;
 
             }
-            else if(data is Sportsmen sportsmen)
+            else if (data is Sportsmen sportsmen)
             {
                 EditSportsmen editSportsmen = new EditSportsmen(sportsmen.Id, sportsmen.FullName, sportsmen.Bday, sportsmen.ParentPhone);
                 editSportsmen.ShowDialog();
                 sportsmensView.DataSource = StartDB.GetSportsmen();
                 sportsmensView.ReadOnly = true;
             }
-            else if(data is Attendances attendances)
+            else if (data is Attendances attendances)
             {
                 EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches.ToString(), attendances.TrainingDate, attendances.Attended);
                 editDateTraining.ShowDialog();

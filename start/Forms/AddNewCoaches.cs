@@ -11,9 +11,14 @@ namespace start
 
         private bool CheckValue()
         {
-            if (textBox1.TextLength == 0 || comboBox1.Items.Count == 0)
+            if (textBox1.TextLength == 0)
             {
-                MessageBox.Show("Проверьте данные");
+                MessageBox.Show("Проверьте ФИО");
+                return false;
+            }
+            else if(comboBox1.Items.Count == 0)
+            {
+                MessageBox.Show("Проверьте тип спорта");
                 return false;
             }
             else

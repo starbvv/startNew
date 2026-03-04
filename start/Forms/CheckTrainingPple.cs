@@ -23,7 +23,7 @@ namespace start
         {
             if (checkedListBox1.Items.Count == 0)
             {
-                MessageBox.Show("Проверьте данные");
+                MessageBox.Show("Проверьте спортсменов");
                 return false;
             }
             else

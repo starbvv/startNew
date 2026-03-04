@@ -24,10 +24,12 @@ namespace start.Forms
         {
             if(comboBox1.Text == string.Empty)
             {
+                MessageBox.Show("Проверьте вид спорта");
                 return false;
             }
             else if(textBox1.Text == FullNameOld)
             {
+                MessageBox.Show("Проверьте ФИО");
                 return false;
             }
             else
@@ -38,8 +40,11 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UpdateInDateBase.UpdateCoaches(CoachesId, textBox1.Text, comboBox1.Text);
-            this.Close();
+            if(CheckValue())
+            {
+                UpdateInDateBase.UpdateCoaches(CoachesId, textBox1.Text, comboBox1.Text);
+                this.Close();
+            }
         }
     }
 }

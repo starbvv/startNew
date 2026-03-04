@@ -15,7 +15,7 @@ namespace start
         {
             if (comboBox1.Items.Count == 0)
             {
-                MessageBox.Show("Проверьте данные");
+                MessageBox.Show("Проверьте спортсмена");
                 return false;
             }
             else

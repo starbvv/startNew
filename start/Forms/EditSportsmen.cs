@@ -34,15 +34,17 @@ namespace start.Forms
             return isValid;
         }
 
-        private bool CheckValue(string tel)
+        private bool CheckValue()
         {
-            if (textBox1.Text == oldFullName || tel == parentPhoneOld)
+            if (textBox1.Text.Length == 0)
             {
+                MessageBox.Show("Проверьте ФИО");
                 return false;
             }
-            else if (bdayOld == dateTimePicker1.Value && CheckTel(tel))
+            else if (!CheckTel(textBox4.Text))
             {
-                return true;
+                MessageBox.Show("Проверьте номер телефона");
+                return false;
             }
             else
             {
@@ -52,8 +54,11 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UpdateInDateBase.UpdateSportsmen(sportsmenId, textBox1.Text, bdayOld, textBox4.Text);
-            this.Close();
+            if(CheckValue())
+            {
+                UpdateInDateBase.UpdateSportsmen(sportsmenId, textBox1.Text, bdayOld, textBox4.Text);
+                this.Close();
+            }
         }
     }
 }

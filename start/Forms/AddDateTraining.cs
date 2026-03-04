@@ -14,9 +14,14 @@ namespace start
 
         private bool CheckValue()
         {
-            if (comboBox1.Items.Count == 0 || checkedListBox1.Items.Count == 0)
+            if (comboBox1.Items.Count == 0)
             {
-                MessageBox.Show("Проверьте данные");
+                MessageBox.Show("Проверьте тренера");
+                return false;
+            }
+            else if (checkedListBox1.Items.Count == 0)
+            {
+                MessageBox.Show("Проверьте спортсменов");
                 return false;
             }
             else

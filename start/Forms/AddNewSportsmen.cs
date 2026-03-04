@@ -22,9 +22,14 @@ namespace start
 
         private bool CheckValue()
         {
-            if (textBox1.TextLength == 0 || !CheckTel(textBox4.Text))
+            if (textBox1.TextLength == 0)
             {
-                MessageBox.Show("Проверьте данные");
+                MessageBox.Show("Проверьте ФИО");
+                return false;
+            }
+            else if (!CheckTel(textBox4.Text))
+            {
+                MessageBox.Show("Проверьте телефон");
                 return false;
             }
             else
@@ -40,11 +45,6 @@ namespace start
                 AddInDateBase.AddNewSportsmen(textBox1.Text, dateTimePicker1.Value.Date, textBox4.Text);
                 this.Close();
             }
-        }
-
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
     }
 }
