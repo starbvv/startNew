@@ -16,7 +16,7 @@ namespace start
                 MessageBox.Show("Проверьте ФИО");
                 return false;
             }
-            else if(comboBox1.Items.Count == 0)
+            else if (comboBox1.Items.Count == 0)
             {
                 MessageBox.Show("Проверьте тип спорта");
                 return false;
@@ -33,6 +33,16 @@ namespace start
             {
                 AddInDateBase.AddNewCouches(textBox1.Text, comboBox1.Text);
                 this.Close();
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsLetter(ch) && ch != 8)
+            {
+                e.Handled = true;
             }
         }
     }

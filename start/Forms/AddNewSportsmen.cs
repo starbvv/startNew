@@ -55,5 +55,15 @@ namespace start
                 e.Handled = true;
             }
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsLetter(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

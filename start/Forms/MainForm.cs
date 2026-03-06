@@ -82,10 +82,22 @@ namespace start
             }
             else if (data is Attendances attendances)
             {
-                EditDateTraining editDateTraining = new EditDateTraining(attendances.Id, attendances.Sportsmen, attendances.Coaches.ToString(), attendances.TrainingDate, attendances.Attended);
-                editDateTraining.ShowDialog();
-                mainView.DataSource = StartDB.GetAttendances();
-                mainView.ReadOnly = true;
+                string coachName = attendances.Coaches?.FullName ?? "";
+
+                var editDateTraining = new EditDateTraining(
+                    id: attendances.Id,
+                    sportsmen: attendances.Sportsmen ?? new Sportsmen(),
+                    coaches: coachName,
+                    trainingDate: attendances.TrainingDate,
+                    attended: attendances.Attended
+                );
+
+                if (editDateTraining.ShowDialog() == DialogResult.OK)
+                {
+                    mainView.DataSource = null;
+                    mainView.DataSource = StartDB.GetAttendances();
+                    mainView.ReadOnly = true;
+                }
             }
         } //<----- получение строк для обновления
 

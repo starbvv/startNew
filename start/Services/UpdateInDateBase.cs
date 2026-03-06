@@ -79,7 +79,7 @@ namespace start.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось обновить тренера");
+                MessageBox.Show("Не удалось обновить посещение");
             }
         }
     }

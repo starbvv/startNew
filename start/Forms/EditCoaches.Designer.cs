@@ -79,6 +79,7 @@
             textBox1.PlaceholderText = "Иван Гречишкин";
             textBox1.Size = new Size(208, 23);
             textBox1.TabIndex = 17;
+            textBox1.KeyPress += textBox1_KeyPress;
             // 
             // EditCoaches
             // 

@@ -70,6 +70,7 @@
             textBox1.PlaceholderText = "Иван Гречишкин";
             textBox1.Size = new Size(208, 23);
             textBox1.TabIndex = 9;
+            textBox1.KeyPress += textBox1_KeyPress;
             // 
             // comboBox1
             // 

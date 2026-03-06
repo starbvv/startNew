@@ -15,20 +15,47 @@ namespace start.Forms
             InitializeComponent();
 
             dateId = id;
-            sportsmensOld = sportsmen;
-            coachesOld = coaches;
+            sportsmensOld = sportsmen ?? new Sportsmen();
+            coachesOld = coaches ?? "";
             trainingDateOld = trainingDate;
             attendedOld = attended;
 
-            comboBox1.Items.AddRange(StartDB.GetCoaches().ToArray());
-            checkedListBox1.Items.AddRange(StartDB.GetSportsmen().ToArray());
+            var allCoaches = StartDB.GetCoaches();
+            var allSportsmen = StartDB.GetSportsmen();
 
-            dateTimePicker1.Value = trainingDate;
+            comboBox1.Items.AddRange(allCoaches.ToArray());
+            checkedListBox1.Items.AddRange(allSportsmen.ToArray());
+
+            dateTimePicker1.Value = trainingDate.Date;
+
+            if (!string.IsNullOrEmpty(coaches))
+            {
+                var currentCoach = allCoaches.FirstOrDefault(c => c.FullName == coaches);
+                if (currentCoach != null)
+                {
+                    comboBox1.SelectedItem = currentCoach;
+                }
+            }
+
+            if (sportsmensOld?.Id > 0)
+            {
+                int targetId = sportsmensOld.Id;
+
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    var item = checkedListBox1.Items[i] as Sportsmen;
+                    if (item != null && item.Id == targetId)
+                    {
+                        checkedListBox1.SetItemChecked(i, true);
+                        break;
+                    }
+                }
+            }
         }
 
         private bool CheckValue()
         {
-            if (comboBox1.Items == null)
+            if (comboBox1.SelectedItem == null)
             {
                 MessageBox.Show("Проверьте тренера");
                 return false;

@@ -22,12 +22,12 @@ namespace start.Forms
 
         private bool CheckValue()
         {
-            if(comboBox1.Text == string.Empty)
+            if (comboBox1.Text == string.Empty)
             {
                 MessageBox.Show("Проверьте вид спорта");
                 return false;
             }
-            else if(textBox1.Text == FullNameOld)
+            else if (textBox1.Text == FullNameOld)
             {
                 MessageBox.Show("Проверьте ФИО");
                 return false;
@@ -40,10 +40,20 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(CheckValue())
+            if (CheckValue())
             {
                 UpdateInDateBase.UpdateCoaches(CoachesId, textBox1.Text, comboBox1.Text);
                 this.Close();
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsLetter(ch) && ch != 8)
+            {
+                e.Handled = true;
             }
         }
     }
