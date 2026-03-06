@@ -40,7 +40,7 @@ namespace start
 
             if (CheckValue())
             {
-                AddInDateBase.AddNewAttendances(cId, sId, all, dateTimePicker1.Value);
+                AddInDateBase.AddNewAttendances(cId, sId, all, dateTimePicker1.Value.Date);
                 this.Close();
             }
         }

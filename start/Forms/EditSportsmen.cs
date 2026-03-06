@@ -54,10 +54,19 @@ namespace start.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(CheckValue())
+            if (CheckValue())
             {
                 UpdateInDateBase.UpdateSportsmen(sportsmenId, textBox1.Text, bdayOld, textBox4.Text);
                 this.Close();
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
             }
         }
     }

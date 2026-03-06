@@ -10,11 +10,11 @@ namespace start.Services
         #region ставим на счетчик
         public static string info;
 
-        public static List<Coaches> info2;
+        public static List<Coaches>? info2;
         public static DateTime dataOneC;
         public static DateTime dataTwoC;
 
-        public static List<Sportsmen> info3;
+        public static List<Sportsmen>? info3;
         public static DateTime dataOneS;
         public static DateTime dataTwoS;
         #endregion
@@ -26,14 +26,32 @@ namespace start.Services
             return info = add;
         }
 
-        public List<Coaches> AddInfoTwo(List<Coaches> addInfo, DateTime dataOne, DateTime dataTwo)
+        public List<Coaches> AddInfoTwo(List<Coaches> addInfo)
         {
-            return info2 = addInfo; dataOneC = dataOne; dataTwoC = dataTwo;
+            return info2 = addInfo; 
+        }
+        public DateTime dataAddOneC(DateTime dataOne)
+        {
+            return dataOneS = dataOne;
+        }
+        public DateTime dataAddTwoC(DateTime dataTwo)
+        {
+            return dataTwoS = dataTwo;
         }
 
-        public List<Sportsmen> AddInfoThree(List<Sportsmen> addInfo, DateTime dataOne, DateTime dataTwo)
+
+
+        public List<Sportsmen> AddInfoThree(List<Sportsmen> addInfo)
         {
-            return info3 = addInfo; dataOneS = dataOne; dataTwoS = dataTwo; 
+            return info3 = addInfo;  
+        }
+        public DateTime dataAddOneS(DateTime dataOne)
+        {
+            return dataOneS = dataOne;
+        }
+        public DateTime dataAddTwoS(DateTime dataTwo)
+        {
+            return dataTwoS = dataTwo;
         }
 
         #region представление всех данных
@@ -143,32 +161,24 @@ namespace start.Services
         public static List<CheckTrainingCoachesKEK> CheckTrainingCoachesOut()
         {
             var all = CheckTrC();
-
-            DateTime from = dataOneC;
-            DateTime to = dataTwoC; 
-
-            if(info2 == null)
+            DateTime from = dataOneC.Date;
+            DateTime to = dataTwoC.Date;
+            if (info2 == null)
             {
                 return all;
             }
             else
             {
                 var name = info2.Select(a => a.FullName?.Trim() ?? "");
-
                 var filtered = all.Where(a => name.Contains(a.CoachesName.Trim()) && a.DateTrainings >= from.Date && a.DateTrainings <= to.Date).ToList();
-
                 return filtered;
             }
-
         }
-
         public static List<CheckTrainingPpleKEK> CheckTrainingPpleAddOut()
         {
             var all = CheckTr();
-
-            DateTime from = dataOneS;
-            DateTime to = dataTwoS;
-
+            DateTime from = dataOneS.Date;
+            DateTime to = dataTwoS.Date;
             if (info3 == null)
             {
                 return all;
@@ -176,9 +186,7 @@ namespace start.Services
             else
             {
                 var name = info3.Select(a => a.FullName?.Trim() ?? "");
-
                 var filtered = all.Where(a => name.Contains(a.ChildName.Trim()) && a.MissedDate >= from.Date && a.MissedDate <= to.Date).ToList();
-
                 return filtered;
             }
         }

@@ -67,36 +67,29 @@ namespace start.Services
             {
                 using var db = new Connect();
 
-                db.Coaches.Attach( idCoaches );
-                db.Entry( idCoaches ).State = EntityState.Unchanged;
+                db.Coaches.Attach(idCoaches);
+                db.Entry(idCoaches).State = EntityState.Unchanged;
 
-                foreach (var smen in idSportsmen) //true
+                var trainingDateOnly = TrainingDate.Date;
+
+                var presentIds = idSportsmen.Select(s => s.Id).ToHashSet();
+
+                foreach (var sportsman in allSportsmen)
                 {
-                    db.Sportsmens.Attach( smen );
-                    db.Entry( smen ).State = EntityState.Unchanged;
+                    db.Sportsmens.Attach(sportsman);
+                    db.Entry(sportsman).State = EntityState.Unchanged;
 
-                    var attendances = new Attendances
+                    bool attended = presentIds.Contains(sportsman.Id);
+
+                    var attendance = new Attendances
                     {
-                        Sportsmen = smen,
+                        Sportsmen = sportsman,
                         Coaches = idCoaches,
-                        TrainingDate = TrainingDate,
-                        Attended = true
+                        TrainingDate = trainingDateOnly,
+                        Attended = attended
                     };
-                    db.Attendances.Add(attendances);
-                }
 
-                foreach (var allSmen in allSportsmen) //false
-                {
-                    db.Sportsmens.Attach(allSmen);
-                    db.Entry(allSmen).State = EntityState.Unchanged;
-
-                    var attendances = new Attendances
-                    {
-                        Sportsmen = allSmen,
-                        Coaches = idCoaches,
-                        TrainingDate = TrainingDate
-                    };
-                    db.Attendances.Add(attendances);
+                    db.Attendances.Add(attendance);
                 }
 
                 db.SaveChanges();

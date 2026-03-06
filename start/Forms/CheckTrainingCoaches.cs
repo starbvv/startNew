@@ -33,7 +33,9 @@ namespace start
                 var date = dateTimePicker1.Value.Date;
                 var date2 = dateTimePicker2.Value.Date;
 
-                a.AddInfoTwo(cId, date, date2);
+                a.AddInfoTwo(cId);
+                a.dataAddOneC(date);
+                a.dataAddTwoC(date2);
 
                 this.Close();
             }

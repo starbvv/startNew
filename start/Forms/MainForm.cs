@@ -135,6 +135,10 @@ namespace start
         private void Adt_FormClosing(object? sender, FormClosingEventArgs e)
         {
             mainView.DataSource = StartDB.GetAttendances();
+            if (mainView.Columns["DateTrainings"] != null)
+            {
+                mainView.Columns["DateTrainings"].DefaultCellStyle.Format = "dd.MM.yyyy";
+            }
         }
         #endregion
 
@@ -185,6 +189,8 @@ namespace start
 
             mainView.DataSource = CheckTraining.CheckPpleOut();
             mainView.ReadOnly = true;
+
+            mainView.Columns["AttendancePercentage"].DefaultCellStyle.Format = "0";
         }
         #endregion
     }

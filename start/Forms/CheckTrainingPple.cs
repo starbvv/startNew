@@ -40,7 +40,9 @@ namespace start
                 var data = dateTimePicker1.Value.Date;
                 var data2 = dateTimePicker2.Value.Date;
 
-                a.AddInfoThree(sId, data, data2);
+                a.AddInfoThree(sId);
+                a.dataAddOneS(data);
+                a.dataAddTwoS(data2);
 
                 this.Close();
             }
