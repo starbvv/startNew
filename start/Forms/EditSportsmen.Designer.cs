@@ -84,6 +84,7 @@
             // textBox4
             // 
             textBox4.Location = new Point(122, 64);
+            textBox4.MaxLength = 15;
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "79998887766";
             textBox4.Size = new Size(208, 23);
@@ -93,6 +94,7 @@
             // textBox1
             // 
             textBox1.Location = new Point(122, 6);
+            textBox1.MaxLength = 60;
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Иван Гречишкин Константинович";
             textBox1.Size = new Size(208, 23);

@@ -66,6 +66,7 @@
             // textBox1
             // 
             textBox1.Location = new Point(125, 15);
+            textBox1.MaxLength = 60;
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Иван Гречишкин";
             textBox1.Size = new Size(208, 23);
