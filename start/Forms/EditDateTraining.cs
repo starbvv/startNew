@@ -60,7 +60,7 @@ namespace start.Forms
                 MessageBox.Show("Проверьте тренера");
                 return false;
             }
-            else if (checkedListBox1.CheckedItems.Count > 0)
+            else if (checkedListBox1.CheckedItems.Count < 0)
             {
                 MessageBox.Show("Проверьте спортсменов");
                 return false;

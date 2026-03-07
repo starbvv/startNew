@@ -27,7 +27,7 @@ namespace start.Forms
                 MessageBox.Show("Проверьте вид спорта");
                 return false;
             }
-            else if (textBox1.Text == FullNameOld)
+            else if (textBox1.TextLength == 0)
             {
                 MessageBox.Show("Проверьте ФИО");
                 return false;
