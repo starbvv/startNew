@@ -50,7 +50,7 @@ namespace start
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8)
+            if (!char.IsDigit(ch) && ch != 8 && ch != '(' && ch != ')' && ch != '+')
             {
                 e.Handled = true;
             }
@@ -60,7 +60,7 @@ namespace start
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsLetter(ch) && ch != 8)
+            if (!char.IsLetter(ch) && ch != 8)
             {
                 e.Handled = true;
             }

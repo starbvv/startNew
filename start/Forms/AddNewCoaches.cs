@@ -40,7 +40,7 @@ namespace start
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsLetter(ch) && ch != 8)
+            if (!char.IsLetter(ch) && ch != 8)
             {
                 e.Handled = true;
             }
